@@ -1,5 +1,7 @@
 import './styles/style.scss';
-import homePage from './components/homePage';
+import createHomePage from './components/homePage';
 
 const root = document.querySelector('#root');
-root.append(homePage);
+root.append(createHomePage());
+
+export default root;

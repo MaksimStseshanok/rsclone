@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   height: 100vh;
   font-family: 'Rubik', sans-serif;
@@ -6,6 +12,23 @@ body {
   background-size: cover;
   padding: 0;
   margin: 0;
+}
+
+button {
+  background: rgba($color: #fff, $alpha: 0.1);
+  border: 2px solid;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  transition: 0.25s;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  &:hover,
+  &:focus {
+    background: rgba(0, 0, 0, 0);
+    color: #3a7999;
+    box-shadow: inset 0 0 0 3px #3a7999;
+  }
 }
 
 #root {
@@ -24,6 +47,48 @@ body {
 }
 
 .btn {
+  color: #fff;
   font-size: 3rem;
-  font-weight: bold;
+}
+
+.table__wrapper {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.table__cell {
+  background: rgba($color: #fff, $alpha: 0.5);
+  border: 2px solid;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+  transition: 0.25s;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.inner__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  & div {
+    // position: absolute;
+    border: 1px dotted rgba(255, 255, 255, 0.1);
+    width: calc(100% / 13);
+    height: calc(100% / 8);
+  }
+}
+
+.field {
+  border: solid 10px #060;
 }
