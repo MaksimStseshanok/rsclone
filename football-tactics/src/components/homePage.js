@@ -1,6 +1,6 @@
 import image from '../assets/images/icon.png';
 import createLevelPage from './levelPage';
-import cleanPage from '../cleanPageFunction/cleanPage';
+import cleanPage from './cleanPageFunction/cleanPage';
 
 const createHomePage = () => {
   const homePage = document.createDocumentFragment();

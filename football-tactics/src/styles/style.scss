@@ -93,29 +93,29 @@ button {
 }
 
 .players {
-  // position: relative;
   display: flex;
   justify-content: space-around;
   width: 100%;
   height: 101px;
   &__wrapper {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
     width: 107px;
-    // right: 0;
-    // bottom: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    &-img {
+    // border: 1px solid black;
+    background: rgba($color: #fff, $alpha: 0.1);
+    &-block {
       width: calc(100% / 2);
       height: calc(100% / 2);
+      border: 1px dotted rgba(255, 255, 255, 0.5);
+    }
+    &-img {
+      width: 100%;
       background: rgba(255, 255, 0, 0.8);
-      border: 1px solid black;
       cursor: pointer;
       transition: all 0.3s;
+      cursor: all-scroll;
       &:hover {
         transform: scale(1.1);
         background: rgba(255, 255, 0, 0.9);
@@ -123,4 +123,16 @@ button {
       }
     }
   }
+}
+
+.hide {
+  display: none;
+}
+.hovered {
+  background: #d1d8e23f;
+}
+
+.drop {
+  background: rgb(255, 255, 0);
+  cursor: default;
 }

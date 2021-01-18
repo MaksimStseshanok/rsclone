@@ -1,5 +1,6 @@
 import createField from './createField';
 import createPlayersBlock from './playersBlock';
+import dragAndDrop from './dragAndDrop/dragAndDrop';
 
 const createGamePage = () => {
   const root = document.querySelector('#root');
@@ -15,6 +16,7 @@ const createGamePage = () => {
   root.append(wrapper, createPlayersBlock(0));
 
   createField();
+  dragAndDrop();
 };
 
 export default createGamePage;

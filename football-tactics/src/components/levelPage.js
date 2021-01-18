@@ -1,4 +1,4 @@
-import cleanPage from '../cleanPageFunction/cleanPage';
+import cleanPage from './cleanPageFunction/cleanPage';
 import createGamePage from './createGamePage';
 
 const createLevelPage = () => {

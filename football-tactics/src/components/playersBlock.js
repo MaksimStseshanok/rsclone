@@ -1,43 +1,42 @@
-import levels from '../levels/levels';
+import levels from './levels/levels';
+import cleanPage from './cleanPageFunction/cleanPage';
+import createGamePage from './createGamePage';
 const createPlayersBlock = (level) => {
-  // const canvas = document.createElement('canvas');
   const wrapper = document.createElement('div');
-  // const innerWrapper = document.createElement('div');
-  // const ctx = canvas.getContext('2d');
-
+  const button = document.createElement('button');
   wrapper.classList.add('players');
-  // innerWrapper.classList.add('players__wrapper');
 
-  // canvas.width = 107;
-  // canvas.height = 101;
-
-  // (function draw() {
-  //   ctx.beginPath();
-  //   ctx.rect(0, 0, 107, 101);
-  //   ctx.stroke();
-  // })();
-
-  for (let i = 0; i < 2; i++) {
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+    cleanPage();
+    createGamePage();
+  });
+  const createBlock = (block) => {
     const innerWrapper = document.createElement('div');
     innerWrapper.classList.add('players__wrapper');
-    if (i === 0) {
-      levels[level].leftBlock.forEach((item) => {
-        const img = document.createElement('img');
-        img.classList.add('players__wrapper-img');
-        img.src = item;
-        innerWrapper.append(img);
-      });
-    } else {
-      levels[level].rightBlock.forEach((item) => {
-        const img = document.createElement('img');
-        img.classList.add('players__wrapper-img');
-        img.src = item;
-        innerWrapper.append(img);
-      });
-    }
-    wrapper.append(innerWrapper);
-  }
+    block.forEach((item) => {
+      const img = document.createElement('img');
+      const imgBlock = document.createElement('div');
+      img.classList.add('players__wrapper-img');
+      imgBlock.classList.add('players__wrapper-block');
+      img.setAttribute('draggable', true);
+      img.src = item;
+      imgBlock.append(img);
+      innerWrapper.append(imgBlock);
 
+      wrapper.append(innerWrapper);
+    });
+  };
+
+  for (let i = 0; i < 3; i++) {
+    if (i === 0) {
+      createBlock(levels[level].leftBlock);
+    } else if (i === 1) {
+      wrapper.append(button);
+    } else {
+      createBlock(levels[level].rightBlock);
+    }
+  }
   return wrapper;
 };
 
