@@ -4,6 +4,7 @@ import dragAndDrop from './dragAndDrop/dragAndDrop';
 
 const createGamePage = () => {
   const root = document.querySelector('#root');
+  const container = document.createElement('div');
   const canvas = document.createElement('canvas');
   const wrapper = document.createElement('div');
   const innerWrapper = document.createElement('div');
@@ -13,7 +14,8 @@ const createGamePage = () => {
   canvas.classList.add('field');
 
   wrapper.append(canvas, innerWrapper);
-  root.append(wrapper, createPlayersBlock(0));
+  container.append(wrapper, createPlayersBlock(0));
+  root.append(container);
 
   createField();
   dragAndDrop();
