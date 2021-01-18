@@ -1,4 +1,6 @@
-function createGamePage() {
+import createCellsField from './createCellsField';
+
+function createField() {
   const canvas = document.querySelector('.field');
   const ctx = canvas.getContext('2d');
 
@@ -49,9 +51,9 @@ function createGamePage() {
       ctx.closePath();
       //Home goal
       ctx.beginPath();
-      ctx.moveTo(1, canvas.height / 2 - 22);
-      ctx.lineTo(1, canvas.height / 2 + 22);
-      ctx.lineWidth = 2;
+      ctx.moveTo(1, canvas.height / 2 - 50);
+      ctx.lineTo(1, canvas.height / 2 + 50);
+      ctx.lineWidth = 10;
       ctx.stroke();
       ctx.closePath();
       ctx.lineWidth = 1;
@@ -79,9 +81,9 @@ function createGamePage() {
       ctx.closePath();
       //Away goal
       ctx.beginPath();
-      ctx.moveTo(canvas.width - 1, canvas.height / 2 - 22);
-      ctx.lineTo(canvas.width - 1, canvas.height / 2 + 22);
-      ctx.lineWidth = 2;
+      ctx.moveTo(canvas.width - 1, canvas.height / 2 - 50);
+      ctx.lineTo(canvas.width - 1, canvas.height / 2 + 50);
+      ctx.lineWidth = 10;
       ctx.stroke();
       ctx.closePath();
       ctx.lineWidth = 1;
@@ -132,7 +134,8 @@ function createGamePage() {
       ctx.closePath();
     },
   };
+  createCellsField();
   return pitch.draw();
 }
 
-export default createGamePage;
+export default createField;

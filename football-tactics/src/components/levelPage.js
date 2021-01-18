@@ -1,6 +1,5 @@
-import createGamePage from './gamePage';
 import cleanPage from '../cleanPageFunction/cleanPage';
-import createCellsField from './createCellsField';
+import createGamePage from './createGamePage';
 
 const createLevelPage = () => {
   const cells = [];
@@ -17,17 +16,7 @@ const createLevelPage = () => {
 
   tableWrapper.addEventListener('click', (event) => {
     cleanPage();
-    const root = document.querySelector('#root');
-    const canvas = document.createElement('canvas');
-    const wrapper = document.createElement('div');
-    const innerWrapper = document.createElement('div');
-    wrapper.classList.add('wrapper');
-    innerWrapper.classList.add('inner__wrapper');
-    wrapper.append(canvas, innerWrapper);
-    canvas.classList.add('field');
-    root.append(wrapper);
     createGamePage();
-    createCellsField();
   });
   return tableWrapper;
 };
