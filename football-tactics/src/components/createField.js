@@ -1,4 +1,5 @@
 import createCellsField from './createCellsField';
+import matrix from './getMatrix/getMatrix';
 
 function createField() {
   const canvas = document.querySelector('.field');
@@ -51,8 +52,8 @@ function createField() {
       ctx.closePath();
       //Home goal
       ctx.beginPath();
-      ctx.moveTo(1, canvas.height / 2 - 50);
-      ctx.lineTo(1, canvas.height / 2 + 50);
+      ctx.moveTo(1, canvas.height / 2 - 60);
+      ctx.lineTo(1, canvas.height / 2 + 60);
       ctx.lineWidth = 10;
       ctx.stroke();
       ctx.closePath();
@@ -81,8 +82,8 @@ function createField() {
       ctx.closePath();
       //Away goal
       ctx.beginPath();
-      ctx.moveTo(canvas.width - 1, canvas.height / 2 - 50);
-      ctx.lineTo(canvas.width - 1, canvas.height / 2 + 50);
+      ctx.moveTo(canvas.width - 1, canvas.height / 2 - 60);
+      ctx.lineTo(canvas.width - 1, canvas.height / 2 + 60);
       ctx.lineWidth = 10;
       ctx.stroke();
       ctx.closePath();
@@ -134,7 +135,7 @@ function createField() {
       ctx.closePath();
     },
   };
-  createCellsField();
+  createCellsField(matrix);
   return pitch.draw();
 }
 

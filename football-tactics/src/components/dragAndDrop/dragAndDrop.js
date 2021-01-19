@@ -1,6 +1,6 @@
 const dragAndDrop = () => {
   const cards = document.querySelectorAll('.players__wrapper-img');
-  const cells = document.querySelectorAll('.field_cell');
+  const cells = document.querySelectorAll('.collumn__cell');
   let card;
 
   const dragStart = function () {

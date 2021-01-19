@@ -8,7 +8,7 @@ const restart = (spanWrapper, span) => {
     setTimeout(() => {
       cleanPage();
       createGamePage();
-    }, 1000);
+    }, 500);
   });
 };
 
