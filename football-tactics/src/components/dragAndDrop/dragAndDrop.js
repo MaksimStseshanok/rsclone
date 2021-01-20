@@ -1,3 +1,6 @@
+import matrix from '../matrix/getMatrix';
+import getCellById from '../matrix/getCellById';
+
 const dragAndDrop = () => {
   const cards = document.querySelectorAll('.players__wrapper-img');
   const cells = document.querySelectorAll('.collumn__cell');
@@ -24,10 +27,19 @@ const dragAndDrop = () => {
     event.preventDefault();
     this.classList.add('hovered');
   };
+
   const dragLeave = function () {
     this.classList.remove('hovered');
   };
-  const dragDrop = function () {
+
+  const dragDrop = function (event) {
+    const element = event.target;
+    const cellId = parseInt(element.getAttribute('data-cell-id'));
+    const elementInfo = getCellById(matrix, cellId);
+    if (elementInfo.id === 1) {
+      return;
+    }
+    console.log(elementInfo);
     this.append(card);
     this.classList.remove('hovered');
   };

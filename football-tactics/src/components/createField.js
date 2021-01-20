@@ -1,5 +1,5 @@
 import createCellsField from './createCellsField';
-import matrix from './getMatrix/getMatrix';
+import matrix from './matrix/getMatrix';
 
 function createField() {
   const canvas = document.querySelector('.field');
