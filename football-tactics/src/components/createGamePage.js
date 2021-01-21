@@ -1,8 +1,9 @@
 import createField from './createField';
 import createPlayersBlock from './playersBlock';
+import createCellsField from './createCellsField';
 import dragAndDrop from './dragAndDrop/dragAndDrop';
 
-const createGamePage = () => {
+const createGamePage = (level) => {
   const root = document.querySelector('#root');
   const container = document.createElement('div');
   const canvas = document.createElement('canvas');
@@ -14,11 +15,12 @@ const createGamePage = () => {
   canvas.classList.add('field');
 
   wrapper.append(canvas, innerWrapper);
-  container.append(wrapper, createPlayersBlock(0));
+  container.append(wrapper, createPlayersBlock(level));
   root.append(container);
 
   createField();
-  dragAndDrop();
+  createCellsField(level);
+  dragAndDrop(level);
 };
 
 export default createGamePage;

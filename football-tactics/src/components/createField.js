@@ -1,6 +1,3 @@
-import createCellsField from './createCellsField';
-import matrix from './matrix/getMatrix';
-
 function createField() {
   const canvas = document.querySelector('.field');
   const ctx = canvas.getContext('2d');
@@ -135,7 +132,6 @@ function createField() {
       ctx.closePath();
     },
   };
-  createCellsField(matrix);
   return pitch.draw();
 }
 

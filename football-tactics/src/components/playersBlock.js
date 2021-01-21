@@ -35,7 +35,7 @@ const createPlayersBlock = (level) => {
       span.textContent = 'loop';
       spanWrapper.append(span);
       wrapper.append(spanWrapper);
-      restart(spanWrapper, span);
+      restart(spanWrapper, span, level);
     } else {
       createBlock(levels[level].rightBlock);
     }

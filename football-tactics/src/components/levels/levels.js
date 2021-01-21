@@ -9,10 +9,25 @@ import up_right from '../../assets/images/arrows/up_right.png';
 
 const levels = [
   {
-    level: 0,
+    level: 1,
+    startCellId: 53,
     leftBlock: [down_right, left_down, right_up, up_left],
     rightBlock: [right_down, down_left, up_right, left_up],
-    rivals: [],
+    defs: [88],
+  },
+  {
+    level: 2,
+    startCellId: 53,
+    leftBlock: [down_right, left_down],
+    rightBlock: [right_down, down_left, up_right, left_up],
+    defs: [14, 13, 6],
+  },
+  {
+    level: 3,
+    startCellId: 53,
+    leftBlock: [down_right, left_down, right_up, up_left],
+    rightBlock: [down_left, up_right, left_up],
+    defs: [5, 66],
   },
 ];
 

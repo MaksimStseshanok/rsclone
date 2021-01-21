@@ -15,8 +15,9 @@ const createLevelPage = () => {
   }
 
   tableWrapper.addEventListener('click', (event) => {
+    // console.log(event.target.textContent);
     cleanPage();
-    createGamePage();
+    createGamePage(event.target.textContent - 1);
   });
   return tableWrapper;
 };

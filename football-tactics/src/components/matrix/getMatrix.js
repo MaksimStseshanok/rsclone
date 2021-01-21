@@ -1,4 +1,6 @@
-const getMatrix = (rows, collumns) => {
+// import levels from '../levels/levels';
+
+const getMatrix = (rows, collumns, level) => {
   const matrix = [];
   let idCounter = 1;
 
@@ -7,12 +9,8 @@ const getMatrix = (rows, collumns) => {
     for (let x = 0; x < collumns; x++) {
       row.push({
         id: idCounter++,
-        start: { id: 10 },
-        finish: false,
         player: false,
-        defender: false,
-        number: 0,
-        mine: false,
+        // defs: levels[level].defs,
         x,
         y,
       });

@@ -1,9 +1,23 @@
 import matrix from '../matrix/getMatrix';
 import getCellById from '../matrix/getCellById';
+import getAroundCells from '../matrix/getAroundCells';
+import levels from '../levels/levels';
 
-const dragAndDrop = () => {
+const dragAndDrop = (level) => {
   const cards = document.querySelectorAll('.players__wrapper-img');
   const cells = document.querySelectorAll('.collumn__cell');
+  const startCell = levels[level].startCellId;
+  const defsId = levels[level].defs;
+
+  matrix.map((item) => {
+    item.forEach((cell) => {
+      if (defsId.includes(cell.id)) {
+        cell.player = true;
+      }
+    });
+    return item;
+  });
+
   let card;
 
   const dragStart = function () {
@@ -15,8 +29,6 @@ const dragAndDrop = () => {
 
   const dragEnd = function () {
     this.classList.remove('hide');
-    this.classList.add('drop');
-    this.setAttribute('draggable', false);
   };
 
   const dragOver = function (event) {
@@ -35,12 +47,19 @@ const dragAndDrop = () => {
   const dragDrop = function (event) {
     const element = event.target;
     const cellId = parseInt(element.getAttribute('data-cell-id'));
-    const elementInfo = getCellById(matrix, cellId);
-    if (elementInfo.id === 1) {
+    const cell = getCellById(matrix, cellId);
+
+    if (cell.player || cell.player === undefined || cell.id === startCell) {
+      this.classList.remove('hovered');
       return;
     }
-    console.log(elementInfo);
-    this.append(card);
+
+    if (getAroundCells(matrix, cell.x, cell.y)) {
+      this.append(card);
+      cell.player = true;
+      this.classList.add('drop');
+      card.setAttribute('draggable', false);
+    }
     this.classList.remove('hovered');
   };
 
