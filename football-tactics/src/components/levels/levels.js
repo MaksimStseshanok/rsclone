@@ -19,7 +19,7 @@ const levels = [
     level: 2,
     startCellId: 53,
     leftBlock: [down_right, left_down],
-    rightBlock: [right_down, down_left, up_right, left_up],
+    rightBlock: [right_down],
     defs: [14, 13, 6],
   },
   {

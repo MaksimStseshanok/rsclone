@@ -19,8 +19,9 @@ const createCellsField = (level) => {
 
       if (cell.id === levels[level].startCellId) {
         const img = document.createElement('img');
+        img.classList.add('start__cell');
+        img.setAttribute('draggable', false);
         img.src = ball;
-        img.style = 'width: 70%';
         cellElement.append(img);
       }
       if (levels[level].defs.includes(cell.id)) {

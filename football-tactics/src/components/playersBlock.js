@@ -1,5 +1,5 @@
 import levels from './levels/levels';
-import restart from './restartAnimation/restart';
+import restart from './restart/restart';
 const createPlayersBlock = (level) => {
   const wrapper = document.createElement('div');
   const spanWrapper = document.createElement('div');
@@ -35,7 +35,10 @@ const createPlayersBlock = (level) => {
       span.textContent = 'loop';
       spanWrapper.append(span);
       wrapper.append(spanWrapper);
-      restart(spanWrapper, span, level);
+      spanWrapper.addEventListener('click', (event) => {
+        event.preventDefault();
+        restart(level);
+      });
     } else {
       createBlock(levels[level].rightBlock);
     }

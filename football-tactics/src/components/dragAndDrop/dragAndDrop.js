@@ -2,6 +2,7 @@ import matrix from '../matrix/getMatrix';
 import getCellById from '../matrix/getCellById';
 import getAroundCells from '../matrix/getAroundCells';
 import levels from '../levels/levels';
+import isFinish from '../isFinish/isFinish';
 
 const dragAndDrop = (level) => {
   const cards = document.querySelectorAll('.players__wrapper-img');
@@ -11,6 +12,7 @@ const dragAndDrop = (level) => {
 
   matrix.map((item) => {
     item.forEach((cell) => {
+      cell.player = false;
       if (defsId.includes(cell.id)) {
         cell.player = true;
       }
@@ -19,6 +21,7 @@ const dragAndDrop = (level) => {
   });
 
   let card;
+  let cardCounter = cards.length;
 
   const dragStart = function () {
     setTimeout(() => {
@@ -59,6 +62,8 @@ const dragAndDrop = (level) => {
       cell.player = true;
       this.classList.add('drop');
       card.setAttribute('draggable', false);
+      cardCounter -= 1;
+      isFinish(cardCounter, level);
     }
     this.classList.remove('hovered');
   };

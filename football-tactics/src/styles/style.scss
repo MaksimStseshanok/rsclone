@@ -1,3 +1,12 @@
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -76,16 +85,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-  // flex-wrap: wrap;
   padding: 10px 10px 14px;
-  // & div {
-  //   border: 1px dotted rgba(255, 255, 255, 0.1);
-  //   width: calc(100% / 13);
-  //   height: calc(100% / 8);
-  // }
 }
 
 .row__cell {
@@ -101,6 +101,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.defender__cell {
+  background: red;
+}
+
+.start__cell {
+  width: 70%;
+  &.active {
+    animation: 0.75s linear 0s normal none infinite running rot;
+  }
 }
 
 .field {
@@ -149,10 +160,6 @@ button {
 .drop {
   background: rgb(255, 255, 0);
   cursor: default;
-}
-
-.defender__cell {
-  background: red;
 }
 
 .restart {
