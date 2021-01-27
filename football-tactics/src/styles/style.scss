@@ -85,18 +85,14 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(13, 1fr);
   padding: 10px 10px 14px;
+  overflow: hidden;
 }
 
-.row__cell {
-  width: 100%;
-  height: calc(100% / 8);
-  display: flex;
-  justify-content: space-between;
-}
-
-.collumn__cell {
-  width: 100%;
+.cell {
   border: 1px dotted rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
@@ -104,14 +100,20 @@ button {
 }
 
 .defender__cell {
+  position: relative;
   background: red;
 }
 
-.start__cell {
+.ball {
+  position: relative;
   width: 70%;
   &.active {
     animation: 0.75s linear 0s normal none infinite running rot;
   }
+}
+
+.start__cell {
+  position: relative;
 }
 
 .field {
@@ -139,12 +141,13 @@ button {
       width: 100%;
       height: 100%;
       background: rgba(255, 255, 0, 0.8);
+      // background: hsl(50%, 100%, 50%);
       cursor: pointer;
-      transition: all 0.3s;
+      transition: transform 0.3s;
       &:hover {
         transform: scale(1.1);
-        background: rgba(255, 255, 0, 0.9);
-        transition: all 0.3s;
+        // background: rgba(255, 255, 0, 0.9);
+        transition: transform 0.3s;
       }
     }
   }

@@ -9,8 +9,6 @@ const getMatrix = (rows, collumns, level) => {
     for (let x = 0; x < collumns; x++) {
       row.push({
         id: idCounter++,
-        player: false,
-        // defs: levels[level].defs,
         x,
         y,
       });

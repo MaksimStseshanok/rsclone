@@ -1,33 +1,27 @@
 import ball from '../assets/images/football.png';
-import matrix from './matrix/getMatrix';
 import levels from './levels/levels';
 
 const createCellsField = (level) => {
   const field = document.querySelector('.inner__wrapper');
 
-  for (let y = 0; y < matrix.length; y++) {
-    const rowElement = document.createElement('div');
-    rowElement.classList.add('row__cell');
-    field.append(rowElement);
+  for (let i = 1; i < 104; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.setAttribute('data-cell-id', i);
 
-    for (let x = 0; x < matrix[y].length; x++) {
-      const cell = matrix[y][x];
-      const cellElement = document.createElement('div');
-      cellElement.classList.add('collumn__cell');
-      cellElement.setAttribute('data-cell-id', cell.id);
-      rowElement.append(cellElement);
-
-      if (cell.id === levels[level].startCellId) {
-        const img = document.createElement('img');
-        img.classList.add('start__cell');
-        img.setAttribute('draggable', false);
-        img.src = ball;
-        cellElement.append(img);
-      }
-      if (levels[level].defs.includes(cell.id)) {
-        cellElement.classList.add('defender__cell');
-      }
+    if (i === levels[level].startCellId) {
+      const img = document.createElement('img');
+      img.classList.add('ball');
+      img.setAttribute('draggable', false);
+      cell.classList.add('start__cell');
+      img.src = ball;
+      cell.append(img);
     }
+    if (levels[level].defs.includes(i)) {
+      cell.classList.add('defender__cell');
+    }
+
+    field.append(cell);
   }
 };
 

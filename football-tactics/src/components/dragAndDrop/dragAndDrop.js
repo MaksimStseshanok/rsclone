@@ -2,11 +2,13 @@ import matrix from '../matrix/getMatrix';
 import getCellById from '../matrix/getCellById';
 import getAroundCells from '../matrix/getAroundCells';
 import levels from '../levels/levels';
-import isFinish from '../isFinish/isFinish';
+import animate from '../animate/animate';
+// import isFinish from '../isFinish/isFinish';
 
 const dragAndDrop = (level) => {
   const cards = document.querySelectorAll('.players__wrapper-img');
-  const cells = document.querySelectorAll('.collumn__cell');
+  const cells = document.querySelectorAll('.cell');
+  const ball = document.querySelector('.ball');
   const startCell = levels[level].startCellId;
   const defsId = levels[level].defs;
 
@@ -63,7 +65,10 @@ const dragAndDrop = (level) => {
       this.classList.add('drop');
       card.setAttribute('draggable', false);
       cardCounter -= 1;
-      isFinish(cardCounter, level);
+      if (!cardCounter) {
+        // ball.classList.add('active');
+        animate();
+      }
     }
     this.classList.remove('hovered');
   };
