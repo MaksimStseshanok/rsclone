@@ -4,7 +4,7 @@ import levels from './levels/levels';
 const createCellsField = (level) => {
   const field = document.querySelector('.inner__wrapper');
 
-  for (let i = 1; i < 104; i++) {
+  for (let i = 1; i < 105; i++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
     cell.setAttribute('data-cell-id', i);
@@ -18,7 +18,8 @@ const createCellsField = (level) => {
       cell.append(img);
     }
     if (levels[level].defs.includes(i)) {
-      cell.classList.add('defender__cell');
+      cell.classList.add('defender__cell', 'play__cell');
+      // cell.setAttribute('data-cell', 'play_cell');
     }
 
     field.append(cell);

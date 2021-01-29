@@ -62,7 +62,9 @@ const dragAndDrop = (level) => {
     if (getAroundCells(matrix, cell.x, cell.y)) {
       this.append(card);
       cell.player = true;
-      this.classList.add('drop');
+      this.classList.add('drop', 'play__cell');
+      // this.setAttribute('data-cell', 'play_cell');
+
       card.setAttribute('draggable', false);
       cardCounter -= 1;
       if (!cardCounter) {

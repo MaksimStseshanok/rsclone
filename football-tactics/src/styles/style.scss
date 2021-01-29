@@ -107,6 +107,7 @@ button {
 .ball {
   position: relative;
   width: 70%;
+  z-index: 1;
   &.active {
     animation: 0.75s linear 0s normal none infinite running rot;
   }

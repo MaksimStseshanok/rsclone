@@ -11,22 +11,42 @@ const levels = [
   {
     level: 1,
     startCellId: 53,
-    leftBlock: [down_right, left_down, right_up, up_left],
-    rightBlock: [],
-    defs: [88],
+    leftBlock: [
+      { img: down_right, entry: 'down', output: 'right' },
+      { img: left_down, entry: 'left', output: 'down' },
+      // { img: right_up, entry: 'right', output: 'up' },
+      // { img: up_left, entry: 'up', output: 'left' },
+    ],
+    rightBlock: [
+      // { img: right_down, entry: 'right', output: 'down' },
+      // { img: down_left, entry: 'down', output: 'left' },
+      { img: up_right, entry: 'up', output: 'right' },
+      { img: left_up, entry: 'left', output: 'up' },
+    ],
+    defs: [24, 48, 63, 102, 87],
   },
   {
     level: 2,
     startCellId: 53,
-    leftBlock: [down_right, left_down],
+    leftBlock: [
+      { img: down_right, entry: 'down', output: 'right' },
+      { img: left_down, entry: 'left', output: 'down' },
+      { img: right_up, entry: 'right', output: 'up' },
+      { img: up_left, entry: 'up', output: 'left' },
+    ],
     rightBlock: [],
     defs: [14, 13, 6],
   },
   {
     level: 3,
     startCellId: 53,
-    leftBlock: [down_right, left_down, right_up, up_left],
-    rightBlock: [right_down, down_left, up_right, left_up],
+    leftBlock: [
+      { img: down_right, entry: 'down', output: 'right' },
+      { img: left_down, entry: 'left', output: 'down' },
+      { img: right_up, entry: 'right', output: 'up' },
+      { img: up_left, entry: 'up', output: 'left' },
+    ],
+    rightBlock: [],
     defs: [5, 66],
   },
 ];
