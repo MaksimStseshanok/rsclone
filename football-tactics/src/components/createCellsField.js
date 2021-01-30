@@ -10,12 +10,20 @@ const createCellsField = (level) => {
     cell.setAttribute('data-cell-id', i);
 
     if (i === levels[level].startCellId) {
+      const imgWrapper = document.createElement('div');
       const img = document.createElement('img');
       img.classList.add('ball');
+      imgWrapper.classList.add('wrapper__ball');
       img.setAttribute('draggable', false);
-      cell.classList.add('start__cell');
-      img.src = ball;
-      cell.append(img);
+      cell.classList.add('cell__start');
+      // img.src = ball;
+      img.src = 'http://upload.wikimedia.org/wikipedia/en/e/ec/Soccer_ball.svg';
+      // img.src = 'https://www.svgrepo.com/show/15859/soccer-ball.svg';
+      imgWrapper.append(img);
+      cell.append(imgWrapper);
+    }
+    if (i === levels[level].finishCellId) {
+      cell.classList.add('cell__finish');
     }
     if (levels[level].defs.includes(i)) {
       cell.classList.add('defender__cell', 'play__cell');

@@ -68,7 +68,7 @@ const dragAndDrop = (level) => {
       card.setAttribute('draggable', false);
       cardCounter -= 1;
       if (!cardCounter) {
-        // ball.classList.add('active');
+        ball.classList.add('active');
         animate();
       }
     }

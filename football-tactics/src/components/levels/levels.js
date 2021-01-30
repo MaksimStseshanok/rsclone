@@ -11,6 +11,7 @@ const levels = [
   {
     level: 1,
     startCellId: 53,
+    finishCellId: 52,
     leftBlock: [
       { img: down_right, entry: 'down', output: 'right' },
       { img: left_down, entry: 'left', output: 'down' },

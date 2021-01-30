@@ -13,7 +13,7 @@ const defCells = [];
 function gameLoop(timeStamp) {
   requestAnimationFrame(gameLoop);
   let timeFraction = (timeStamp - start) / 1000;
-  if (timeFraction < 1 / 48) return;
+  if (timeFraction < 1 / 100) return;
 
   start = timeStamp;
 
@@ -38,19 +38,19 @@ function update() {
 function draw(direction) {
   switch (direction) {
     case 'right':
-      rectX += 4;
+      rectX += 2;
       cell.style.left = `${rectX}px`;
       break;
     case 'down':
-      rectY += 4;
+      rectY += 2;
       cell.style.top = `${rectY}px`;
       break;
     case 'left':
-      rectX -= 4;
+      rectX -= 2;
       cell.style.left = `${rectX}px`;
       break;
     case 'up':
-      rectY -= 4;
+      rectY -= 2;
       cell.style.top = `${rectY}px`;
       break;
   }
