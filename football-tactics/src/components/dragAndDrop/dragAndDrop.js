@@ -3,7 +3,7 @@ import getCellById from '../matrix/getCellById';
 import getAroundCells from '../matrix/getAroundCells';
 import levels from '../levels/levels';
 import animate from '../animate/animate';
-// import isFinish from '../isFinish/isFinish';
+import gameData from '../gameData/gameData';
 
 const dragAndDrop = (level) => {
   const cards = document.querySelectorAll('.players__wrapper-img');
@@ -63,13 +63,12 @@ const dragAndDrop = (level) => {
       this.append(card);
       cell.player = true;
       this.classList.add('drop', 'play__cell');
-      // this.setAttribute('data-cell', 'play_cell');
 
       card.setAttribute('draggable', false);
       cardCounter -= 1;
       if (!cardCounter) {
         ball.classList.add('active');
-        animate();
+        animate(gameData);
       }
     }
     this.classList.remove('hovered');

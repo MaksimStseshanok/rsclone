@@ -18,7 +18,6 @@ const createCellsField = (level) => {
       cell.classList.add('cell__start');
       // img.src = ball;
       img.src = 'http://upload.wikimedia.org/wikipedia/en/e/ec/Soccer_ball.svg';
-      // img.src = 'https://www.svgrepo.com/show/15859/soccer-ball.svg';
       imgWrapper.append(img);
       cell.append(imgWrapper);
     }
@@ -27,7 +26,6 @@ const createCellsField = (level) => {
     }
     if (levels[level].defs.includes(i)) {
       cell.classList.add('defender__cell', 'play__cell');
-      // cell.setAttribute('data-cell', 'play_cell');
     }
 
     field.append(cell);

@@ -2,6 +2,7 @@ import createField from './createField';
 import createPlayersBlock from './playersBlock';
 import createCellsField from './createCellsField';
 import dragAndDrop from './dragAndDrop/dragAndDrop';
+import createModal from './modal/modal';
 
 const createGamePage = (level) => {
   const root = document.querySelector('#root');
@@ -16,7 +17,7 @@ const createGamePage = (level) => {
 
   wrapper.append(canvas, innerWrapper);
   container.append(wrapper, createPlayersBlock(level));
-  root.append(container);
+  root.append(container, createModal());
 
   createField();
   createCellsField(level);

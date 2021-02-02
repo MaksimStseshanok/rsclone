@@ -1,69 +1,88 @@
-let rectX = 0;
-let rectY = 0;
-let cell;
+import openModal from '../modal/openModal';
 
-let outputDirection = 'right';
-let entryDirection = 'down';
-let prevOutputDirection;
-let prevEntryDirection;
-let start = 0;
-let flag = true;
-const defCells = [];
+let startData = {};
+// let startData = {};
+// for (let key in gameData) {
+//   startData[key] = gameData[key];
+// }
+
+function animate(gameData) {
+  for (let key in gameData) {
+    startData[key] = gameData[key];
+  }
+  gameLoop();
+}
 
 function gameLoop(timeStamp) {
-  requestAnimationFrame(gameLoop);
-  let timeFraction = (timeStamp - start) / 1000;
-  if (timeFraction < 1 / 100) return;
+  if (getWallCollision() === 'goal') {
+    console.log(startData.flag);
+    openModal(true);
+    return;
+  } else if (
+    getWallCollision() === 'no goal' ||
+    !startData.flag ||
+    startData.prevOutputDirection === startData.outputDirection
+  ) {
+    openModal(false);
+    return;
+  } else {
+    requestAnimationFrame(gameLoop);
+    let timeFraction = (timeStamp - startData.start) / 1000;
+    if (timeFraction < 1 / 100) return;
 
-  start = timeStamp;
+    startData.start = timeStamp;
 
-  if (flag) {
     update();
-  } else return;
+  }
 }
 
 function update() {
-  if (!cell) {
-    cell = document.querySelector('.ball');
+  if (!startData.cell) {
+    startData.cell = document.querySelector('.ball');
   }
 
-  isCollision(cell);
-  if (prevOutputDirection !== outputDirection) {
-    draw(outputDirection);
-  } else {
-    return;
-  }
+  isCollision(startData.cell);
+  // if (startData.prevOutputDirection !== startData.outputDirection) {
+  draw(startData.outputDirection);
+  // } else {
+  // return;
+  // }
 }
 
 function draw(direction) {
   switch (direction) {
     case 'right':
-      rectX += 2;
-      cell.style.left = `${rectX}px`;
+      startData.rectX += 2;
+      startData.cell.style.left = `${startData.rectX}px`;
       break;
     case 'down':
-      rectY += 2;
-      cell.style.top = `${rectY}px`;
+      startData.rectY += 2;
+      startData.cell.style.top = `${startData.rectY}px`;
       break;
     case 'left':
-      rectX -= 2;
-      cell.style.left = `${rectX}px`;
+      startData.rectX -= 2;
+      startData.cell.style.left = `${startData.rectX}px`;
       break;
     case 'up':
-      rectY -= 2;
-      cell.style.top = `${rectY}px`;
+      startData.rectY -= 2;
+      startData.cell.style.top = `${startData.rectY}px`;
       break;
   }
 }
 
 function getDirection(direction) {
-  prevOutputDirection = outputDirection;
-  entryDirection = direction.firstChild.getAttribute('data-cell-entry');
-  outputDirection = direction.firstChild.getAttribute('data-cell-output');
-  checkPrevDirection(prevOutputDirection, entryDirection);
+  startData.prevOutputDirection = startData.outputDirection;
+  startData.entryDirection = direction.firstChild.getAttribute(
+    'data-cell-entry'
+  );
+  startData.outputDirection = direction.firstChild.getAttribute(
+    'data-cell-output'
+  );
+  checkPrevDirection(startData.prevOutputDirection, startData.entryDirection);
 }
 
 function checkPrevDirection(output, entry) {
+  console.log(output, entry);
   if (
     (output === 'down' && entry === 'up') ||
     (output === 'left' && entry === 'right') ||
@@ -71,7 +90,7 @@ function checkPrevDirection(output, entry) {
     (output === 'right' && entry === 'left')
   ) {
     return true;
-  } else prevOutputDirection = outputDirection;
+  } else startData.prevOutputDirection = startData.outputDirection;
 }
 
 function isCollision(obj) {
@@ -85,12 +104,14 @@ function isCollision(obj) {
         cells[i].classList.add('defender__cell');
 
         setTimeout(() => {
-          defCells.push(cells[i]);
+          startData.defCells.push(cells[i]);
         }, 1000);
-      } else if (defCells.includes(cells[i]) || !cells[i].firstChild) {
-        console.log(1);
-
-        flag = false;
+      } else if (
+        startData.defCells.includes(cells[i]) ||
+        !cells[i].firstChild
+      ) {
+        console.log(startData.flag);
+        startData.flag = false;
       }
     }
   }
@@ -101,7 +122,7 @@ function getCollision(a, b) {
   const aRect = a.getBoundingClientRect();
   const bRect = b.getBoundingClientRect();
 
-  if (outputDirection === 'right') {
+  if (startData.outputDirection === 'right') {
     if (
       aRect.left + aRect.width / 2 > bRect.left + bRect.width / 2 &&
       aRect.right < bRect.right &&
@@ -111,7 +132,7 @@ function getCollision(a, b) {
       return true;
     } else return false;
   }
-  if (outputDirection === 'left') {
+  if (startData.outputDirection === 'left') {
     if (
       aRect.left > bRect.left &&
       aRect.right - aRect.width / 2 < bRect.right - bRect.width / 2 &&
@@ -121,7 +142,7 @@ function getCollision(a, b) {
       return true;
     } else return false;
   }
-  if (outputDirection === 'up') {
+  if (startData.outputDirection === 'up') {
     if (
       aRect.left > bRect.left &&
       aRect.right < bRect.right &&
@@ -131,7 +152,7 @@ function getCollision(a, b) {
       return true;
     } else return false;
   }
-  if (outputDirection === 'down') {
+  if (startData.outputDirection === 'down') {
     if (
       aRect.left > bRect.left &&
       aRect.right < bRect.right &&
@@ -143,4 +164,28 @@ function getCollision(a, b) {
   }
 }
 
-export default gameLoop;
+function getWallCollision() {
+  const field = document
+    .querySelector('.inner__wrapper')
+    .getBoundingClientRect();
+  const ball = document.querySelector('.ball').getBoundingClientRect();
+  const finish = document
+    .querySelector('.cell__finish')
+    .getBoundingClientRect();
+  if (
+    field.right < ball.right &&
+    ball.top > finish.top &&
+    ball.bottom < finish.bottom
+  ) {
+    return 'goal';
+  } else if (
+    field.right < ball.right ||
+    ball.x < field.left ||
+    field.top > ball.top ||
+    field.bottom < ball.bottom
+  ) {
+    return 'no goal';
+  } else return false;
+}
+
+export default animate;

@@ -1,6 +1,7 @@
 import image from '../assets/images/icon.png';
 import createLevelPage from './levelPage';
 import cleanPage from './cleanPageFunction/cleanPage';
+import checkLocalStorage from './storage';
 
 const createHomePage = () => {
   const homePage = document.createDocumentFragment();
@@ -22,7 +23,7 @@ const createHomePage = () => {
     const root = document.querySelector('#root');
     cleanPage();
 
-    root.append(createLevelPage());
+    root.append(createLevelPage(checkLocalStorage()));
   });
 
   return homePage;
