@@ -1,7 +1,7 @@
 import image from '../assets/images/icon.png';
 import createLevelPage from './levelPage';
 import cleanPage from './cleanPageFunction/cleanPage';
-import checkLocalStorage from './storage';
+import checkLocalStorage from './checkLocalStorage';
 
 const createHomePage = () => {
   const homePage = document.createDocumentFragment();

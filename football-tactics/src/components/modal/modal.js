@@ -1,6 +1,6 @@
 import cleanPage from '../cleanPageFunction/cleanPage';
 import createGamePage from '../createGamePage';
-import checkLocalStorage from '../storage';
+import checkLocalStorage from '../checkLocalStorage';
 import createHomePage from '../homePage';
 
 const level = checkLocalStorage();
@@ -20,20 +20,13 @@ const createModal = () => {
   resultText.classList.add('result');
   menu.classList.add('menu');
 
-  for (let i = 0; i < 2; i++) {
-    const menuItem = document.createElement('li');
-    menuItem.classList.add('menu__item');
-    if (i === 0) {
-      menuItem.textContent = 'restart';
-    } else {
-      menuItem.textContent = 'back to home';
-    }
-    menu.append(menuItem);
-  }
-
   menu.addEventListener('click', (event) => {
     event.preventDefault();
-    if (event.target.textContent === 'restart') {
+    const menuText = event.target.textContent;
+    if (menuText === 'next level') {
+      cleanPage();
+      createGamePage(level.currentlevel + 1);
+    } else if (menuText === 'restart') {
       cleanPage();
       createGamePage(level.currentlevel);
     } else {
@@ -42,24 +35,6 @@ const createModal = () => {
       root.append(createHomePage());
     }
   });
-
-  // modal.innerHTML = `
-  //   <div class="modal-wrapper">
-  //     <div class="modal">
-  //       <div class="head">
-  //       </div>
-  //       <div class="content">
-  //           <div class="result">
-  //             ${result}
-  //           </div>
-  //           <ul class="menu">
-  //             <li class="menu__item">restart</li>
-  //             <li class="menu__item">back to menu</li>
-  //           </ul>
-  //       </div>
-  //     </div>
-  //   </div>
-  // `;
 
   content.append(resultText, menu);
   modal.append(head, content);

@@ -1,10 +1,14 @@
 import openModal from '../modal/openModal';
+import checkLocalStorage from '../checkLocalStorage';
+import saveCompleteLevel from '../saveCompleteLevel';
 
 let startData = {};
 let requestId;
+let numberOfCells;
 
-function animate(gameData) {
+function animate(gameData, number) {
   cancelAnimationFrame(requestId);
+  numberOfCells = number;
   for (let key in gameData) {
     startData[key] = gameData[key];
   }
@@ -13,14 +17,19 @@ function animate(gameData) {
 
 function gameLoop(timeStamp) {
   if (getWallCollision() === 'goal') {
-    openModal(true);
+    const level = checkLocalStorage();
+    saveCompleteLevel(level);
+    openModal('goal');
+    return;
+  } else if (getWallCollision() === 'players') {
+    openModal('players');
     return;
   } else if (
     getWallCollision() === 'no goal' ||
     !startData.flag ||
     startData.prevOutputDirection === startData.outputDirection
   ) {
-    openModal(false);
+    openModal('no goal');
     return;
   } else {
     requestId = requestAnimationFrame(gameLoop);
@@ -75,7 +84,6 @@ function getDirection(direction) {
 }
 
 function checkPrevDirection(output, entry) {
-  console.log(output, entry);
   if (
     (output === 'down' && entry === 'up') ||
     (output === 'left' && entry === 'right') ||
@@ -95,6 +103,7 @@ function isCollision(obj) {
         cells[i].firstChild.style = `display: none`;
         cells[i].classList.remove('drop');
         cells[i].classList.add('defender__cell');
+        --numberOfCells;
 
         setTimeout(() => {
           startData.defCells.push(cells[i]);
@@ -103,7 +112,6 @@ function isCollision(obj) {
         startData.defCells.includes(cells[i]) ||
         !cells[i].firstChild
       ) {
-        console.log(startData.flag);
         startData.flag = false;
       }
     }
@@ -170,7 +178,7 @@ function getWallCollision() {
     ball.top > finish.top &&
     ball.bottom < finish.bottom
   ) {
-    return 'goal';
+    return numberOfCells ? 'players' : 'goal';
   } else if (
     field.right < ball.right ||
     ball.x < field.left ||

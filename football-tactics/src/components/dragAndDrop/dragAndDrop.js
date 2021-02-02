@@ -68,7 +68,7 @@ const dragAndDrop = (level) => {
       cardCounter -= 1;
       if (!cardCounter) {
         ball.classList.add('active');
-        animate(gameData);
+        animate(gameData, cards.length);
       }
     }
     this.classList.remove('hovered');

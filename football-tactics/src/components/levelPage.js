@@ -3,6 +3,7 @@ import createGamePage from './createGamePage';
 import levels from './levels/levels';
 
 const createLevelPage = (obj) => {
+  console.log(obj);
   const cells = [];
   const tableWrapper = document.createElement('div');
   tableWrapper.classList.add('table__wrapper');
@@ -12,7 +13,7 @@ const createLevelPage = (obj) => {
     cell.textContent = i + 1;
     cell.classList.add('table__cell');
     tableWrapper.append(cell);
-    if (i < obj.completeLevels) {
+    if (i <= obj.completeLevels) {
       cell.classList.add('active');
       cells.push(cell);
     }

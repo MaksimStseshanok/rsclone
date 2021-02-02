@@ -3,8 +3,10 @@ import createPlayersBlock from './playersBlock';
 import createCellsField from './createCellsField';
 import dragAndDrop from './dragAndDrop/dragAndDrop';
 import createModal from './modal/modal';
+// import saveCompleteLevel from './saveCompleteLevel';
 
 const createGamePage = (level) => {
+  // saveCompleteLevel(level);
   const root = document.querySelector('#root');
   const container = document.createElement('div');
   const canvas = document.createElement('canvas');

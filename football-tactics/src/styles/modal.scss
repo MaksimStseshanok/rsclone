@@ -10,9 +10,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  // background: rgba(41, 171, 164, 0.8);
   background: rgba(0, 0, 0, 0.7);
-  // background: rgba(255, 255, 255, 0.5);
   visibility: hidden;
   opacity: 0;
   transition: all 0.25s ease-in-out;
@@ -44,20 +42,13 @@
   opacity: 1;
 }
 
-// .head {
-//   width: 100%;
-//   height: 32px;
-//   overflow: hidden;
-//   background: #006e1e;
-// }
-
 .content {
   height: 90%;
   padding: 10%;
   display: flex;
   flex-direction: column;
   align-items: normal;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .result {
@@ -66,23 +57,17 @@
 }
 .result i {
   font-size: 60px;
+  & h1 {
+    font-size: 45px;
+  }
 }
 
-.fa-thumbs-o-up {
+.goal {
   color: #008329;
-  & + h1 {
-    color: #008329;
-  }
-}
-.fa-thumbs-o-down {
-  color: #d10e0e;
-  & + h1 {
-    color: #d10e0e;
-  }
 }
 
-.result h1 {
-  font-size: 45px;
+.no-goal {
+  color: #d10e0e;
 }
 
 .menu {
