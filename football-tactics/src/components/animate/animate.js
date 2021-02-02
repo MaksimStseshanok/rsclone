@@ -1,12 +1,10 @@
 import openModal from '../modal/openModal';
 
 let startData = {};
-// let startData = {};
-// for (let key in gameData) {
-//   startData[key] = gameData[key];
-// }
+let requestId;
 
 function animate(gameData) {
+  cancelAnimationFrame(requestId);
   for (let key in gameData) {
     startData[key] = gameData[key];
   }
@@ -15,7 +13,6 @@ function animate(gameData) {
 
 function gameLoop(timeStamp) {
   if (getWallCollision() === 'goal') {
-    console.log(startData.flag);
     openModal(true);
     return;
   } else if (
@@ -26,7 +23,7 @@ function gameLoop(timeStamp) {
     openModal(false);
     return;
   } else {
-    requestAnimationFrame(gameLoop);
+    requestId = requestAnimationFrame(gameLoop);
     let timeFraction = (timeStamp - startData.start) / 1000;
     if (timeFraction < 1 / 100) return;
 
@@ -42,11 +39,7 @@ function update() {
   }
 
   isCollision(startData.cell);
-  // if (startData.prevOutputDirection !== startData.outputDirection) {
   draw(startData.outputDirection);
-  // } else {
-  // return;
-  // }
 }
 
 function draw(direction) {

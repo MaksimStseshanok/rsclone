@@ -49,33 +49,6 @@ const createPlayersBlock = (level) => {
 function addCellDirection(element, obj) {
   element.setAttribute('data-cell-output', obj.output);
   element.setAttribute('data-cell-entry', obj.entry);
-  // if (side === 'left') {
-  //   if (index === 0) {
-  //     cell.setAttribute('data-cell-direction', 'right');
-  //   }
-  //   if (index === 1) {
-  //     cell.setAttribute('data-cell-direction', 'down');
-  //   }
-  //   if (index === 2) {
-  //     cell.setAttribute('data-cell-direction', 'up');
-  //   }
-  //   if (index === 3) {
-  //     cell.setAttribute('data-cell-direction', 'left');
-  //   }
-  // } else {
-  //   if (index === 0) {
-  //     cell.setAttribute('data-cell-direction', 'down');
-  //   }
-  //   if (index === 1) {
-  //     cell.setAttribute('data-cell-direction', 'left');
-  //   }
-  //   if (index === 2) {
-  //     cell.setAttribute('data-cell-direction', 'right');
-  //   }
-  //   if (index === 3) {
-  //     cell.setAttribute('data-cell-direction', 'up');
-  //   }
-  // }
 }
 
 export default createPlayersBlock;
