@@ -18,7 +18,7 @@ const createGamePage = (level) => {
   canvas.classList.add('field');
 
   if (level === levels.length) {
-    alert('game over');
+    alert('Победа! На данный момент больше уровней нет(');
     root.append(createHomePage());
     return;
   }

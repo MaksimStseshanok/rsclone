@@ -26,12 +26,12 @@ const createModal = () => {
     event.preventDefault();
     const level = checkLocalStorage();
     const menuText = event.target.textContent;
-    if (menuText === 'next level') {
+    if (menuText === 'дальше') {
       const playMusic = new Audio(levelSound);
       cleanPage();
       checkSound(playMusic, 'levelSound');
       createGamePage(level.currentlevel);
-    } else if (menuText === 'restart') {
+    } else if (menuText === 'повторить') {
       const playMusic = new Audio(levelSound);
       cleanPage();
       checkSound(playMusic, 'levelSound');
