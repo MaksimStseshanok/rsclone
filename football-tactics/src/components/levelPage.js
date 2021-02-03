@@ -1,9 +1,9 @@
 import cleanPage from './cleanPageFunction/cleanPage';
 import createGamePage from './createGamePage';
 import levels from './levels/levels';
+import saveLevel from './saveLevel';
 
 const createLevelPage = (obj) => {
-  console.log(obj);
   const cells = [];
   const tableWrapper = document.createElement('div');
   tableWrapper.classList.add('table__wrapper');
@@ -21,10 +21,10 @@ const createLevelPage = (obj) => {
 
   cells.forEach((button) => {
     button.addEventListener('click', (event) => {
-      // console.log(event.target.textContent);
-      // saveGame(event.target.textContent);
+      const level = event.target.textContent - 1;
       cleanPage();
-      createGamePage(event.target.textContent - 1);
+      saveLevel(level);
+      createGamePage(level);
     });
   });
   return tableWrapper;

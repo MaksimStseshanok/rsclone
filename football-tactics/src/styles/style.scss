@@ -67,6 +67,30 @@ button {
   grid-template-columns: repeat(5, 1fr);
 }
 
+.sound__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.sound {
+  font-size: 3rem;
+  color: rgba($color: rgba(136, 136, 136, 0.274), $alpha: 0.7);
+  &__active {
+    color: rgba($color: #fff, $alpha: 0.9);
+  }
+  // &__inactive {
+  //   width: 5px;
+  //   height: 100%;
+  //   background: rgba($color: rgba(136, 136, 136, 0.274), $alpha: 0.7);
+  //   position: absolute;
+  //   transform: rotate(-45deg);
+  //   border-radius: 5px;
+  //   margin: 10px;
+  //   z-index: 1;
+  // }
+}
 .table__cell {
   background: rgba($color: #fff, $alpha: 0.7);
   border: 2px solid;

@@ -9,21 +9,23 @@ const createPlayersBlock = (level) => {
   span.classList.add('material-icons');
   spanWrapper.classList.add('restart');
 
-  const createBlock = (block, side) => {
+  const createBlock = (block) => {
     const innerWrapper = document.createElement('div');
     innerWrapper.classList.add('players__wrapper');
-    block.forEach((item, index) => {
+    block.forEach((item) => {
       const img = document.createElement('img');
       const imgBlock = document.createElement('div');
-
-      img.classList.add('players__wrapper-img');
       imgBlock.classList.add('players__wrapper-block');
-      img.setAttribute('draggable', true);
-      addCellDirection(img, item);
-      img.src = item.img;
-      imgBlock.append(img);
-      innerWrapper.append(imgBlock);
 
+      if (item.img) {
+        img.classList.add('players__wrapper-img');
+        img.setAttribute('draggable', true);
+        addCellDirection(img, item);
+        img.src = item.img;
+        imgBlock.append(img);
+      }
+
+      innerWrapper.append(imgBlock);
       wrapper.append(innerWrapper);
     });
   };

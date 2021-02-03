@@ -7,6 +7,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.mp3$/,
+        include: SRC,
+        loader: 'file-loader',
+      },
+      {
         test: /\.(png|jpg|gif)$/,
         use: {
           loader: 'url-loader',

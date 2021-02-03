@@ -3,8 +3,6 @@ import createGamePage from '../createGamePage';
 import checkLocalStorage from '../checkLocalStorage';
 import createHomePage from '../homePage';
 
-const level = checkLocalStorage();
-
 const createModal = () => {
   const modalWrapper = document.createElement('div');
   const modal = document.createElement('div');
@@ -22,10 +20,11 @@ const createModal = () => {
 
   menu.addEventListener('click', (event) => {
     event.preventDefault();
+    const level = checkLocalStorage();
     const menuText = event.target.textContent;
     if (menuText === 'next level') {
       cleanPage();
-      createGamePage(level.currentlevel + 1);
+      createGamePage(level.currentlevel);
     } else if (menuText === 'restart') {
       cleanPage();
       createGamePage(level.currentlevel);

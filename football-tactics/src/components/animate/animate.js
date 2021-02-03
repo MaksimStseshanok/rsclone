@@ -1,6 +1,6 @@
 import openModal from '../modal/openModal';
 import checkLocalStorage from '../checkLocalStorage';
-import saveCompleteLevel from '../saveCompleteLevel';
+import saveLevel from '../saveLevel';
 
 let startData = {};
 let requestId;
@@ -17,8 +17,8 @@ function animate(gameData, number) {
 
 function gameLoop(timeStamp) {
   if (getWallCollision() === 'goal') {
-    const level = checkLocalStorage();
-    saveCompleteLevel(level);
+    const level = checkLocalStorage().currentlevel;
+    saveLevel(level + 1);
     openModal('goal');
     return;
   } else if (getWallCollision() === 'players') {
