@@ -2,8 +2,11 @@ import cleanPage from './cleanPageFunction/cleanPage';
 import createGamePage from './createGamePage';
 import levels from './levels/levels';
 import saveLevel from './saveLevel';
+import levelSound from '../assets/sounds/levelSound.mp3';
+import checkSound from './sounds/sounds';
 
 const createLevelPage = (obj) => {
+  const playMusic = new Audio(levelSound);
   const cells = [];
   const tableWrapper = document.createElement('div');
   tableWrapper.classList.add('table__wrapper');
@@ -24,6 +27,7 @@ const createLevelPage = (obj) => {
       const level = event.target.textContent - 1;
       cleanPage();
       saveLevel(level);
+      checkSound(playMusic, 'levelSound');
       createGamePage(level);
     });
   });

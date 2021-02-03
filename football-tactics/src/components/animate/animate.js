@@ -1,17 +1,21 @@
 import openModal from '../modal/openModal';
 import checkLocalStorage from '../checkLocalStorage';
 import saveLevel from '../saveLevel';
+import animateSound from '../../assets/sounds/animateSound.mp3';
+import checkSound from '../sounds/sounds';
 
 let startData = {};
 let requestId;
 let numberOfCells;
 
 function animate(gameData, number) {
+  const playMusic = new Audio(animateSound);
   cancelAnimationFrame(requestId);
   numberOfCells = number;
   for (let key in gameData) {
     startData[key] = gameData[key];
   }
+  checkSound(playMusic, 'animateSound');
   gameLoop();
 }
 

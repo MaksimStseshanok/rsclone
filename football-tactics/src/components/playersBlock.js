@@ -1,5 +1,6 @@
 import levels from './levels/levels';
 import restart from './restart/restart';
+
 const createPlayersBlock = (level) => {
   const wrapper = document.createElement('div');
   const spanWrapper = document.createElement('div');
@@ -30,7 +31,7 @@ const createPlayersBlock = (level) => {
     });
   };
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     if (i === 0) {
       createBlock(levels[level].leftBlock, 'left');
     } else if (i === 1) {
@@ -41,6 +42,13 @@ const createPlayersBlock = (level) => {
         event.preventDefault();
         restart(level);
       });
+    } else if (i === 2) {
+      const soundBtnWrapper = document.createElement('div');
+      const soundPlay = document.createElement('i');
+      soundBtnWrapper.classList.add('sound__wrapper');
+      soundPlay.classList.add('fa', 'fa-volume-up', 'sound');
+      soundBtnWrapper.append(soundPlay);
+      wrapper.append(soundBtnWrapper);
     } else {
       createBlock(levels[level].rightBlock, 'right');
     }

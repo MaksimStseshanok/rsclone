@@ -26,10 +26,12 @@ body {
 }
 
 button {
+  max-width: 280px;
+  width: 100%;
   background: rgba($color: #fff, $alpha: 0.1);
   border: 2px solid;
-  margin: 0.5em;
-  padding: 0.5em 1em;
+  margin: 0.15em;
+  padding: 0.2em;
   transition: 0.25s;
   cursor: pointer;
   font-weight: bold;
@@ -61,35 +63,27 @@ button {
   font-size: 3rem;
 }
 
+.info {
+  width: 80%;
+  color: #fff;
+  margin: 0.4em;
+  text-align: center;
+}
+
 .table__wrapper {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(5, 1fr);
 }
 
-.sound__wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
 .sound {
   font-size: 3rem;
-  color: rgba($color: rgba(136, 136, 136, 0.274), $alpha: 0.7);
+  padding: 10px;
+  transition: 0.25s;
   &__active {
     color: rgba($color: #fff, $alpha: 0.9);
+    transition: 0.25s;
   }
-  // &__inactive {
-  //   width: 5px;
-  //   height: 100%;
-  //   background: rgba($color: rgba(136, 136, 136, 0.274), $alpha: 0.7);
-  //   position: absolute;
-  //   transform: rotate(-45deg);
-  //   border-radius: 5px;
-  //   margin: 10px;
-  //   z-index: 1;
-  // }
 }
 .table__cell {
   background: rgba($color: #fff, $alpha: 0.7);
@@ -211,9 +205,10 @@ button {
   cursor: default;
 }
 
-.restart {
+.restart,
+.sound__wrapper {
   width: 107px;
-  height: 100%;
+  // height: 100%;
   background: rgba($color: #fff, $alpha: 0.1);
   display: flex;
   align-items: center;

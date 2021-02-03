@@ -26,7 +26,6 @@ const createGamePage = (level) => {
   wrapper.append(canvas, innerWrapper);
   container.append(wrapper, createPlayersBlock(level));
   root.append(container, createModal());
-  console.log(levels.length);
 
   createField();
   createCellsField(level);
